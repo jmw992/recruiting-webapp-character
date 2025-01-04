@@ -7,6 +7,27 @@ export type Attributes = {
   Charisma: number;
 };
 
+export type Skills = {
+  ["Acrobatics"]: number;
+  ["Animal Handling"]: number;
+  ["Arcana"]: number;
+  ["Athletics"]: number;
+  ["Deception"]: number;
+  ["History"]: number;
+  ["Insight"]: number;
+  ["Intimidation"]: number;
+  ["Investigation"]: number;
+  ["Medicine"]: number;
+  ["Nature"]: number;
+  ["Perception"]: number;
+  ["Performance"]: number;
+  ["Persuasion"]: number;
+  ["Religion"]: number;
+  ["Sleight of Hand"]: number;
+  ["Stealth"]: number;
+  ["Survival"]: number;
+};
+
 export type AttributeString =
   | "Strength"
   | "Dexterity"
@@ -39,6 +60,13 @@ export type Skill = {
   name: SkillString;
   attributeModifier: AttributeString;
 };
+
+export type CharacterData = {
+  attributes: Attributes;
+  skills?: Skills;
+};
+
+export type AttributePoints = Record<AttributeString, number>;
 
 export type SkillList = Skill[];
 

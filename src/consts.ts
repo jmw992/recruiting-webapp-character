@@ -1,4 +1,10 @@
-import type { Attributes, AttributeString, Class, SkillList } from "./types";
+import type {
+  Attributes,
+  AttributeString,
+  Class,
+  SkillList,
+  SkillString,
+} from "./types";
 
 export const ATTRIBUTE_LIST: AttributeString[] = [
   "Strength",
@@ -58,4 +64,57 @@ export const SKILL_LIST: SkillList = [
   { name: "Sleight of Hand", attributeModifier: "Dexterity" },
   { name: "Stealth", attributeModifier: "Dexterity" },
   { name: "Survival", attributeModifier: "Wisdom" },
+];
+
+export const SKILL_ATTRIBUTE_MODIFIER_MAP: Record<
+  SkillString,
+  AttributeString
+> = {
+  ["Acrobatics"]: "Dexterity",
+  ["Animal Handling"]: "Wisdom",
+  ["Arcana"]: "Intelligence",
+  ["Athletics"]: "Strength",
+  ["Deception"]: "Charisma",
+  ["History"]: "Intelligence",
+  ["Insight"]: "Wisdom",
+  ["Intimidation"]: "Charisma",
+  ["Investigation"]: "Intelligence",
+  ["Medicine"]: "Wisdom",
+  ["Nature"]: "Intelligence",
+  ["Perception"]: "Wisdom",
+  ["Performance"]: "Charisma",
+  ["Persuasion"]: "Charisma",
+  ["Religion"]: "Intelligence",
+  ["Sleight of Hand"]: "Dexterity",
+  ["Stealth"]: "Dexterity",
+  ["Survival"]: "Wisdom",
+};
+
+export const ATTRIBUTE_SKILL_MODIFIER_MAP = {
+  Dexterity: ["Acrobatics", "Sleight of Hand", "Stealth"],
+  Wisdom: ["Animal Handling", "Insight", "Medicine", "Perception", "Survival"],
+  Intelligence: ["Arcana", "History", "Investigation", "Nature", "Religion"],
+  Strength: ["Athletics"],
+  Charisma: ["Deception", "Intimidation", "Performance", "Persuasion"],
+} as Record<AttributeString, SkillString[]>;
+
+export const SKILLS: SkillString[] = [
+  "Acrobatics",
+  "Animal Handling",
+  "Arcana",
+  "Athletics",
+  "Deception",
+  "History",
+  "Insight",
+  "Intimidation",
+  "Investigation",
+  "Medicine",
+  "Nature",
+  "Perception",
+  "Performance",
+  "Persuasion",
+  "Religion",
+  "Sleight of Hand",
+  "Stealth",
+  "Survival",
 ];
