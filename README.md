@@ -1,13 +1,6 @@
 # recruiting-webapp-character
-React coding test
+Submission for react coding test.
 
-# Create a repository from this template
-- Click on `Use this template` dropdown on this repo page.
-- select `Create a new repository`
-- Under Owner, use your personal account and **NOT** `policyme-recruiting`
-- Write a name of the repo as `recruiting-webapp-character`
-- Select `Public` as visibility
-- Click `Create repository`
 
 # Run the application
 - Clone the newly created repo locally
@@ -20,13 +13,9 @@ npm i
 npm start
 ```
 
-# Typescript
+See the application 
 
-Typescript has been added to this project. It is setup to be optional. You are not required to use it. It has been added for those who prefer developing with Typescript over Javascript.
-
-# Submitting your code
-- Make sure your app can be set up and run via the following two commands: `npm i` and `npm start`
-- Reply to the coding exercise email you received from our team with the link to this new public repository.
+![dnd demo](https://gist.github.com/user-attachments/assets/22892950-1aee-4a7b-b256-43e09bc2969e)
 
 # Instructions
 

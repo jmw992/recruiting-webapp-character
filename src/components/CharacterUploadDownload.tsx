@@ -108,7 +108,7 @@ export const CharacterUploadDownload = () => {
         </button>
       </span>
       <br />
-      <i>See console for Upload / download status</i>
+      <i>See console for Upload / Download status</i>
       {invalidSkillPoints ? <i>{". "}Won't upload invalid character.</i> : null}
     </>
   );

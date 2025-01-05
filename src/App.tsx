@@ -13,8 +13,9 @@ function App() {
   return (
     <div className='App'>
       <header className='App-header'>
-        <h1>React Coding Exercise</h1>
+        <h1>DnD Character Builder Demo</h1>
       </header>
+      <section className='App-section'></section>
       <section className='App-section'>
         <CharacterOverview />
         <CharacterBaseTemplates />
