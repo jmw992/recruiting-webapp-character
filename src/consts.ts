@@ -47,7 +47,8 @@ export const CLASS_LIST: Record<Class, Attributes> = {
   },
 };
 
-export const SKILL_LIST: SkillList = [
+// Unused but keeping in for reference
+export const _SKILL_LIST: SkillList = [
   { name: "Acrobatics", attributeModifier: "Dexterity" },
   { name: "Animal Handling", attributeModifier: "Wisdom" },
   { name: "Arcana", attributeModifier: "Intelligence" },

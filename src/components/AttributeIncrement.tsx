@@ -10,14 +10,22 @@ export const AttributeIncrement = ({
   attribute: AttributeString;
 }) => {
   const [increment, setIncrement] = useState(1);
-  const { totalAttributePoints, attributePoints, incrementAttributePoints } =
-    useCharacterStore();
+  const {
+    totalAttributePoints,
+    attributePoints,
+    incrementAttributePoints,
+    totalSkillPoints,
+    availableSkillPoints,
+  } = useCharacterStore();
 
   const maxIncrement = MAX_ATTRIBUTE_TOTAL - totalAttributePoints;
-
+  const color =
+    totalSkillPoints > availableSkillPoints && attribute === "Intelligence"
+      ? "red"
+      : "white";
   return (
     <div>
-      <b style={{ marginRight: 10 }}>
+      <b style={{ color, marginRight: 10 }}>
         {attribute}
         {" : "}
         {attributePoints[attribute]}
@@ -25,7 +33,6 @@ export const AttributeIncrement = ({
 
       <button
         onClick={() => {
-          console.log("jmw on submit +", increment + totalAttributePoints);
           if (increment + totalAttributePoints > MAX_ATTRIBUTE_TOTAL) {
             alert(
               `The total ${
@@ -41,7 +48,6 @@ export const AttributeIncrement = ({
       </button>
       <button
         onClick={() => {
-          console.log("jmw on submit -", totalAttributePoints - increment);
           if (totalAttributePoints - increment < 0) {
             alert(
               `The total ${

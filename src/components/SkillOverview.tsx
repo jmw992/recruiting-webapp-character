@@ -21,8 +21,9 @@ export const SkillOverview = () => {
         </p>
       ) : (
         <p style={{ color }}>
-          Warning by reducing intelligence you caused on overspend on skill
-          points. Either reduce skill point spend or increase intelligence.
+          Warning by reducing intelligence you caused an overspend on skill
+          points. Either reduce skill point spend or increase{" "}
+          <b>Intelligence</b>.
         </p>
       )}
     </>

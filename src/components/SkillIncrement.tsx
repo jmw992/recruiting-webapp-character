@@ -20,8 +20,7 @@ export const SkillIncrement = ({ skill }: { skill: SkillString }) => {
 
   const isValidSkillPoint = totalSkillPoints <= availableSkillPoints;
   // Want intelligence skills
-  const color =
-    !isValidSkillPoint && modifier === "Intelligence" ? "red" : "white";
+  const color = !isValidSkillPoint ? "red" : "white";
 
   return (
     <div style={{ color }}>
@@ -33,7 +32,6 @@ export const SkillIncrement = ({ skill }: { skill: SkillString }) => {
 
       <button
         onClick={() => {
-          console.log("jmw on submit skill +", increment + totalSkillPoints);
           if (increment + totalSkillPoints > availableSkillPoints) {
             alert(
               `The total ${
@@ -49,7 +47,6 @@ export const SkillIncrement = ({ skill }: { skill: SkillString }) => {
       </button>
       <button
         onClick={() => {
-          console.log("jmw on submit skill -", totalSkillPoints - increment);
           if (totalSkillPoints - increment < 0) {
             alert(
               `The total ${

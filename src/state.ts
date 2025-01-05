@@ -62,10 +62,6 @@ export const useCharacterStore = create<CharacterStore>((set) => ({
   ),
   incrementAttributePoints: (attribute, n) =>
     set((state) => {
-      console.log(
-        "jmw incrementAttributePoints",
-        state.totalAttributePoints + n
-      );
       if (
         state.totalAttributePoints + n > MAX_ATTRIBUTE_TOTAL ||
         state.totalAttributePoints + n < 0
@@ -109,7 +105,7 @@ export const useCharacterStore = create<CharacterStore>((set) => ({
       ) {
         return state;
       }
-      console.log("jmw state.totalSkillPoints + n", state.totalSkillPoints + n);
+
       return {
         ...state,
         totalSkillPoints: state.totalSkillPoints + n,
