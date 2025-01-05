@@ -18,6 +18,8 @@ export const ATTRIBUTE_LIST: AttributeString[] = [
 export const MIN_SKILL_POINTS = 10;
 export const MAX_ATTRIBUTE_TOTAL = 70;
 
+export const CLASSES: Class[] = ["Barbarian", "Bard", "Wizard"];
+
 export const CLASS_LIST: Record<Class, Attributes> = {
   Barbarian: {
     Strength: 14,

@@ -11,14 +11,38 @@ import {
   MAX_ATTRIBUTE_TOTAL,
   MIN_SKILL_POINTS,
   SKILLS,
+  CLASS_LIST,
 } from "./consts";
 
-const getCharacterClass = (attributePoints: AttributePoints): Class | "" => {
-  return "";
+const getCharacterClasses = (attributePoints: AttributePoints): Class[] => {
+  const characterClasses = [];
+  if (
+    Object.entries(CLASS_LIST["Barbarian"]).every(
+      ([key, val]) => attributePoints[key] >= val
+    )
+  ) {
+    characterClasses.push("Barbarian");
+  }
+  if (
+    Object.entries(CLASS_LIST["Bard"]).every(
+      ([key, val]) => attributePoints[key] >= val
+    )
+  ) {
+    characterClasses.push("Bard");
+  }
+  if (
+    Object.entries(CLASS_LIST["Wizard"]).every(
+      ([key, val]) => attributePoints[key] >= val
+    )
+  ) {
+    characterClasses.push("Wizard");
+  }
+
+  return characterClasses;
 };
 
 type CharacterStore = {
-  characterClass: Class | "";
+  characterClasses: Class[];
   totalAttributePoints: number;
   attributePoints: AttributePoints;
   incrementAttributePoints: (attribute: AttributeString, n: number) => void;
@@ -30,7 +54,7 @@ type CharacterStore = {
 };
 
 export const useCharacterStore = create<CharacterStore>((set) => ({
-  characterClass: "",
+  characterClasses: [],
   totalAttributePoints: 0,
   attributePoints: ATTRIBUTE_LIST.reduce(
     (acc, attribute) => ({ ...acc, [attribute]: 0 }),
@@ -54,14 +78,17 @@ export const useCharacterStore = create<CharacterStore>((set) => ({
           ? state.availableSkillPoints + 4 * n
           : state.availableSkillPoints;
 
+      const attributePoints = {
+        ...state.attributePoints,
+        [attribute]: state.attributePoints[attribute] + n,
+      };
+
       return {
         ...state,
         totalAttributePoints: state.totalAttributePoints + n,
+        characterClasses: getCharacterClasses(attributePoints),
         availableSkillPoints,
-        attributePoints: {
-          ...state.attributePoints,
-          [attribute]: state.attributePoints[attribute] + n,
-        },
+        attributePoints,
       };
     }),
   availableSkillPoints: MIN_SKILL_POINTS,
@@ -113,13 +140,14 @@ export const useCharacterStore = create<CharacterStore>((set) => ({
         return state;
       }
 
-      const availableSkillPoints = 10 + attributePoints["Intelligence"] * 4;
+      const availableSkillPoints =
+        MIN_SKILL_POINTS + attributePoints["Intelligence"] * 4;
       let totalSkillPoints = 0;
       const skillPoints = SKILLS.reduce(
         (acc, skill) => ({ ...acc, [skill]: 0 }),
         {} as Record<SkillString, number>
       );
-      Object.entries(characterData.skills).forEach(([key, val]) => {
+      Object.entries(characterData.skills || {}).forEach(([key, val]) => {
         skillPoints[key as SkillString] = val;
         totalSkillPoints += val;
       });
@@ -132,8 +160,10 @@ export const useCharacterStore = create<CharacterStore>((set) => ({
         );
         return state;
       }
+
       return {
         ...state,
+        characterClasses: getCharacterClasses(attributePoints),
         totalAttributePoints,
         attributePoints,
         availableSkillPoints,
